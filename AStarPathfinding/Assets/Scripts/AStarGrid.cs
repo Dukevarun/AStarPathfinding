@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AStarGrid : MonoBehaviour
 {
-    public bool onlyDisplayPathGizmos;
+    public bool displayGridGizmos;
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
@@ -13,9 +13,10 @@ public class AStarGrid : MonoBehaviour
 
     float nodeDiameter;
     int gridSizeX, gridSizeY;
+    List<Node> neighbours = new List<Node>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
@@ -55,7 +56,7 @@ public class AStarGrid : MonoBehaviour
 
     public List<Node> GetNeighbours(Node node)
     {
-        List<Node> neighbours = new List<Node>();
+        neighbours.Clear();
         for (int x = -1; x <= 1; x++)
         {
             for (int y = -1; y <= 1; y++)
@@ -88,36 +89,16 @@ public class AStarGrid : MonoBehaviour
         return grid[x, y];
     }
 
-    public List<Node> path;
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
-        if (onlyDisplayPathGizmos)
+        if (grid != null && displayGridGizmos)
         {
-            if (path != null)
+            foreach (Node node in grid)
             {
-                foreach (Node node in path)
-                {
-                    Gizmos.color = Color.black;
-                    Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - .1f));
-                }
-            }
-        }
-        else
-        {
-            if (grid != null)
-            {
-                foreach (Node node in grid)
-                {
-                    Gizmos.color = (node.walkable) ? Color.white : Color.red;
-                    if (path != null)
-                    {
-                        if (path.Contains(node))
-                            Gizmos.color = Color.black;
-                    }
-                    Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - .1f));
-                }
+                Gizmos.color = (node.walkable) ? Color.white : Color.red;
+                Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - .1f));
             }
         }
     }
