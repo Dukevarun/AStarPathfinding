@@ -245,7 +245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178992966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7852039, y: 0, z: -4.12}
+  m_LocalPosition: {x: -0.7852039, y: 0, z: -2.75}
   m_LocalScale: {x: 0.97312486, y: 1, z: 2.2499998}
   m_Children: []
   m_Father: {fileID: 1584992081}
@@ -450,7 +450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253550390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3662105, y: 0, z: -0.18021367}
+  m_LocalPosition: {x: 4.3662105, y: 0, z: -0.76}
   m_LocalScale: {x: 2.8085299, y: 1, z: 1.8562499}
   m_Children: []
   m_Father: {fileID: 1584992081}
@@ -939,7 +939,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 55
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -963,7 +963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 108.5, z: -3.5}
+  m_LocalPosition: {x: 0, y: 108.5, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1020,6 +1020,7 @@ MonoBehaviour:
     m_Bits: 64
   gridWorldSize: {x: 100, y: 100}
   nodeRadius: 0.5
+  obstacleProximityPenalty: 10
   walkableRegions:
   - terrainMask:
       serializedVersion: 2
@@ -1028,7 +1029,7 @@ MonoBehaviour:
   - terrainMask:
       serializedVersion: 2
       m_Bits: 256
-    terrainPenalty: 3
+    terrainPenalty: 5
 --- !u!114 &1064891684
 MonoBehaviour:
   m_ObjectHideFlags: 0
